@@ -12,6 +12,8 @@ export class CartPage {
   private cartTable = '#cart_info_table';
   private cartRows = '#cart_info_table tbody tr';
   private proceedToCheckoutBtn = '.check_out';
+  private deleteItemBtn = '.cart_quantity_delete';
+  private emptyCartSpan = '#empty_cart';
 
   constructor(page: Page) {
     this.page = page;
@@ -57,5 +59,22 @@ export class CartPage {
    */
   async proceedToCheckout() {
     await this.page.click(this.proceedToCheckoutBtn);
+  }
+
+  /**
+   * Deletes the first product from the shopping cart using the delete button (X).
+   */
+  async removeFirstProductFromCart() {
+    await this.page.locator(this.deleteItemBtn).first().click();
+  }
+
+  /**
+   * Asserts that the shopping cart is empty (e.g. displaying 'Cart is empty!' message).
+   */
+  async expectCartToBeEmpty() {
+    // Az Automation Exercise oldalon az üres kosár felirat: "Cart is empty! Click here to buy products."
+    const emptyCartMessage = this.page.locator('#empty_cart');
+    await expect(emptyCartMessage).toBeVisible();
+    await expect(emptyCartMessage).toContainText('Cart is empty!');
   }
 }

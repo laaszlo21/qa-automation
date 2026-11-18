@@ -1,7 +1,7 @@
 /**
  * @fileoverview UI End-to-End Tests for the Shopping Cart Module.
  * Validates adding products from the catalog, interacting with confirmation modals,
- * and verifying cart item persistence on the cart overview page.
+ * verifying cart item persistence, and item removal / empty cart handling.
  */
 import { test } from '@playwright/test';
 import { ProductsPage } from '../../pages/ProductsPage';
@@ -21,5 +21,21 @@ test.describe('Cart Module Tests', () => {
     // Step 3: Verify the cart page is rendered and contains the added item
     await cartPage.expectCartToBeNotEmpty();
     await cartPage.expectProductInCart();
+  });
+
+  test('Should remove product from cart and verify empty cart state (Positive test)', async ({ page }) => {
+    const productsPage = new ProductsPage(page);
+    const cartPage = new CartPage(page);
+
+    // Step 1: Navigate, add product to cart, and go to cart view
+    await productsPage.navigateToProducts();
+    await productsPage.addProductAndClickViewCart();
+    await cartPage.expectCartToBeNotEmpty();
+
+    // Step 2: Remove the product from the cart using the delete button
+    await cartPage.removeFirstProductFromCart();
+
+    // Step 3: Verify that the cart is now empty
+    await cartPage.expectCartToBeEmpty();
   });
 });
