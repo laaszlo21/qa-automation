@@ -6,7 +6,7 @@ A projekt a modern szoftvertesztelési elveket követi: könnyen bővíthető, �
 
 ---
 
-## 🏗️ Architektúra és Mappaszerkezet
+## Architektúra és Mappaszerkezet
 
 A kódbázis tiszta, moduláris felépítést követ, szigorúan elválasztva az oldalabsztrakciókat a tesztesetektől:
 
