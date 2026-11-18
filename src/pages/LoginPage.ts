@@ -66,4 +66,20 @@ export class LoginPage {
     await expect(userElement).toBeVisible();
     await expect(userElement).toContainText(username);
   }
+
+  /**
+   * Navigates to the account deletion page by clicking the delete account link in the header.
+   */
+  async deleteAccount() {
+    await this.page.locator('a[href="/delete_account"]').click();
+  }
+
+  /**
+   * Asserts that the account has been successfully deleted and the confirmation message is displayed.
+   */
+  async expectAccountDeleted() {
+    const deleteHeader = this.page.locator('h2[data-qa="account-deleted"]');
+    await expect(deleteHeader).toBeVisible();
+    await expect(deleteHeader).toHaveText('Account Deleted!');
+  }
 }
