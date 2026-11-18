@@ -22,7 +22,8 @@ qa-automation/
 │   │   ├── ContactUsPage.ts      # Kapcsolatfelvételi űrlap, fájlfeltöltés és natív dialógusok
 │   │   ├── LoginPage.ts          # Autentikáció és fióktörlés kezelése
 │   │   ├── ProductsPage.ts       # Termékkatalógus keresés és modális kosár műveletek
-│   │   └── SignupPage.ts         # Regisztráció
+│   │   ├── SignupPage.ts         # Regisztráció
+│   │   └── SubscriptionPage.ts   # Hírlevél feliratkozás és footer kezelés
 │   └── tests/
 │       ├── api/                  # REST API tesztcsomagok
 │       │   ├── api-negative.spec.ts      # Negatív API validációk és Data-Driven tesztek
@@ -36,7 +37,8 @@ qa-automation/
 │           ├── e2e-checkout.spec.ts      # Teljes felhasználói út a regisztrációtól a fizetésig
 │           ├── login.spec.ts             # Pozitív és negatív bejelentkezési forgatókönyvek
 │           ├── products.spec.ts          # Katalógus láthatóság és kulcsszavas keresés pontossága
-│           └── signup.spec.ts            # Dinamikus regisztráció és duplikált email ellenőrzés
+│           ├── signup.spec.ts            # Dinamikus regisztráció és duplikált email ellenőrzés
+│           └── subscription.spec.ts      # Hírlevél feliratkozás tesztek
 │
 ├── package.json                  # Projekt függőségek és parancsok
 ├── playwright.config.ts          # Playwright futtatókonfiguráció
